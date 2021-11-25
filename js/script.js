@@ -49,30 +49,34 @@ const text = [
 ]
 
 const containerImages = document.querySelector('.container-big-img');
+const containerThumb = document.querySelector('.container-small-img');
 
 //inserisco immagini nel DOM da array
 for (let index = 0; index < items.length; index++) {
     let image;
-
-    //se prima immagine, aggiungo classe first e active
-    if (index == 0) {
-        image = `<div class="thumb first active">
+    image = `<div class="thumb">
                     <img src="${items[index]}" alt="">
-                </div>`
-    //se ultima immagine, aggiungo classe last
-    } else if (index == items.length - 1){
-        image = `<div class="thumb last">
-                    <img src="${items[index]}" alt="">
-                </div>`
-    //altrimenti
-    } else {
-        image = `<div class="thumb">
-                    <img src="${items[index]}" alt="">
-                </div>`
-    }
-    
+                    <div class="text">
+                        <h2 class="title">${title[index]}</h2>
+                        <p class="subtitle">${text[index]}</p>
+                    </div>
+                </div>`;
     containerImages.innerHTML += image;
+
+    let thumb;
+    thumb = `<div class="thumbnail">
+                    <img src="${items[index]}" alt="">
+                </div>`;
+    containerThumb.innerHTML += thumb;
 }
+
+const images = document.querySelectorAll('.container-big-img .thumb');
+const thumbnails = document.querySelectorAll('.container-small-img .thumbnail');
+
+images[0].classList.add('first', 'active');
+images[items.length - 1].classList.add('last');
+// thumbnails[0].classList.add('first', 'active');
+// thumbnails[items.length - 1].classList.add('last');
 
 
 //cliccare sulla freccia in giù e mostrare immagine successiva, eliminare la classe active all'immagine precedente e aggiungerla a quella da mostrare
@@ -84,6 +88,7 @@ const arrowUp = document.querySelector('.container-small-img .arrow-up');
 arrowDown.addEventListener('click', function () {
 
     const imageActive = document.querySelector('.container-big-img .active');
+    // const thumbActive = document.querySelector('.container-small-img .active');
 
     let classes = imageActive.classList;
     let last = false;
@@ -112,6 +117,7 @@ arrowDown.addEventListener('click', function () {
 //script sul click della freccia in alto
 arrowUp.addEventListener('click', function () {
     const imageActive = document.querySelector('.container-big-img .active');
+    // const thumbActive = document.querySelector('.container-small-img .active');
 
     let classes = imageActive.classList;
     let first = false;
