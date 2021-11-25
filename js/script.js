@@ -75,8 +75,8 @@ const thumbnails = document.querySelectorAll('.container-small-img .thumbnail');
 
 images[0].classList.add('first', 'active');
 images[items.length - 1].classList.add('last');
-// thumbnails[0].classList.add('first', 'active');
-// thumbnails[items.length - 1].classList.add('last');
+thumbnails[0].classList.add('first', 'activethumb');
+thumbnails[items.length - 1].classList.add('last');
 
 
 //cliccare sulla freccia in giù e mostrare immagine successiva, eliminare la classe active all'immagine precedente e aggiungerla a quella da mostrare
@@ -88,7 +88,7 @@ const arrowUp = document.querySelector('.container-small-img .arrow-up');
 arrowDown.addEventListener('click', function () {
 
     const imageActive = document.querySelector('.container-big-img .active');
-    // const thumbActive = document.querySelector('.container-small-img .active');
+    const thumbActive = document.querySelector('.container-small-img .activethumb');
 
     let classes = imageActive.classList;
     let last = false;
@@ -108,16 +108,19 @@ arrowDown.addEventListener('click', function () {
     //se non è l'ultima immagine
     if (last == false) {
         imageActive.classList.remove('active');
+        thumbActive.classList.remove('activethumb');
 
         const imageNext = imageActive.nextElementSibling;
+        const thumbNext = thumbActive.nextElementSibling;
         imageNext.classList.add('active');
+        thumbNext.classList.add('activethumb');
     }
 })
 
 //script sul click della freccia in alto
 arrowUp.addEventListener('click', function () {
     const imageActive = document.querySelector('.container-big-img .active');
-    // const thumbActive = document.querySelector('.container-small-img .active');
+    const thumbActive = document.querySelector('.container-small-img .activethumb');
 
     let classes = imageActive.classList;
     let first = false;
@@ -137,9 +140,12 @@ arrowUp.addEventListener('click', function () {
     //se non è la prima immagine
     if (first == false) {
         imageActive.classList.remove('active');
+        thumbActive.classList.remove('activethumb');
 
         const imageNext = imageActive.previousElementSibling;
         imageNext.classList.add('active');
+        const thumbNext = thumbActive.previousElementSibling;
+        thumbNext.classList.add('activethumb');
     }
 
 })
