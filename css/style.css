@@ -37,7 +37,7 @@ html {
     position: relative;
 }
 
-div[class^="thumb-"] {
+div.thumb {
     height: 100%;
     width: 100%;
     display: none;
@@ -47,7 +47,7 @@ div[class^="thumb-"] {
     display: block;
 }
 
-div[class^="thumb-"] img {
+div.thumb img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -57,7 +57,7 @@ div[class^="thumb-"] img {
     position: absolute;
     left: 0;
     bottom: 0;
-    padding: 20px;
+    padding: 10px;
     color: white;
     text-align: right;
 }
