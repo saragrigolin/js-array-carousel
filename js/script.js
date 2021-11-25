@@ -22,3 +22,91 @@ Aggiungere il ciclo infinito del carosello. Ovvero se la miniatura attiva è la 
 
 Prima di partire a scrivere codice:
 Non lasciamoci spaventare dalla complessità apparente dell’esercizio, ma analizziamo prima, come abbiamo fatto sempre, cosa ci potrebbe aspettare. Abbiamo completato ormai da qualche giorno la sessione HTML e CSS, se non ci ricordiamo qualcosa andiamo pure a riguardare alcuni argomenti. Non dedichiamo però al ripasso più di una mezz’ora, così da non perdere di vista il focus dell’esercizio. */
+
+//creo array per immagini, titoli e testi
+const items = [
+    'img/01.jpg',
+    'img/02.jpg',
+    'img/03.jpg',
+    'img/04.jpg',
+    'img/05.jpg'
+];
+
+const title = [
+    'Svezia',
+    'Svizzera',
+    'Gran Bretagna',
+    'Germania',
+    'Paradise'
+]
+
+const text = [
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+    'Lorem ipsum',
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+    'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+]
+
+//cliccare sulla freccia in giù e mostrare immagine successiva, eliminare la classe active all'immagine precedente e aggiungerla a quella da mostrare
+
+const arrowDown = document.querySelector('.container-small-img .arrow-down');
+const arrowUp = document.querySelector('.container-small-img .arrow-up');
+
+//script sul click della freccia in basso
+arrowDown.addEventListener('click', function () {
+
+    const imageActive = document.querySelector('.container-big-img .active');
+
+    let classes = imageActive.classList;
+    let last = false;
+
+    //controllo le classi di ogni immagine
+    for (let index = 0; index < classes.length; index++) {
+        const element = classes[index];
+        console.log(index, element);
+
+        //se imageActive ha classe last
+        if (element == 'last') {
+            last = true;
+        }
+
+    }
+
+    //se non è l'ultima immagine
+    if (last == false) {
+        imageActive.classList.remove('active');
+
+        const imageNext = imageActive.nextElementSibling;
+        imageNext.classList.add('active');
+    }
+})
+
+//script sul click della freccia in alto
+arrowUp.addEventListener('click', function () {
+    const imageActive = document.querySelector('.container-big-img .active');
+
+    let classes = imageActive.classList;
+    let first = false;
+
+    //controllo le classi di ogni immagine
+    for (let index = 0; index < classes.length; index++) {
+        const element = classes[index];
+        console.log(index, element);
+
+        //se imageActive ha classe first
+        if (element == 'first') {
+            first = true;
+        }
+
+    }
+
+    //se non è la prima immagine
+    if (first == false) {
+        imageActive.classList.remove('active');
+
+        const imageNext = imageActive.previousElementSibling;
+        imageNext.classList.add('active');
+    }
+
+})
