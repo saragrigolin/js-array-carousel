@@ -70,9 +70,9 @@ div.thumb img {
     object-fit: cover;
 }
 
-.thumbnail.active img {
+.container-small-img .thumbnail.activethumb {
     border: 3px solid white;
-    opacity: 0.8;
+
 }
 
 div[class^="arrow-"] {
