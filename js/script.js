@@ -48,6 +48,33 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
+const containerImages = document.querySelector('.container-big-img');
+
+//inserisco immagini nel DOM da array
+for (let index = 0; index < items.length; index++) {
+    let image;
+
+    //se prima immagine, aggiungo classe first e active
+    if (index == 0) {
+        image = `<div class="thumb first active">
+                    <img src="${items[index]}" alt="">
+                </div>`
+    //se ultima immagine, aggiungo classe last
+    } else if (index == items.length - 1){
+        image = `<div class="thumb last">
+                    <img src="${items[index]}" alt="">
+                </div>`
+    //altrimenti
+    } else {
+        image = `<div class="thumb">
+                    <img src="${items[index]}" alt="">
+                </div>`
+    }
+    
+    containerImages.innerHTML += image;
+}
+
+
 //cliccare sulla freccia in giù e mostrare immagine successiva, eliminare la classe active all'immagine precedente e aggiungerla a quella da mostrare
 
 const arrowDown = document.querySelector('.container-small-img .arrow-down');
