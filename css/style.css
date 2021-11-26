@@ -32,6 +32,7 @@ html {
     height: 100%;
     width: 20%;
     position: relative;
+    background-color: black;
 }
 
 div.thumb {
@@ -68,10 +69,12 @@ div.thumb img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    opacity: 0.8;
 }
 
-.container-small-img .thumbnail.activethumb {
+.container-small-img .thumbnail.activethumb img {
     border: 3px solid white;
+    opacity: 1;
 
 }
 
@@ -79,6 +82,7 @@ div[class^="arrow-"] {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 999;
 }
 
 div[class^="arrow-"] i {
