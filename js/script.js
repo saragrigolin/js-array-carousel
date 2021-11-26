@@ -137,13 +137,33 @@ arrowUp.addEventListener('click', function () {
 
     }
 
+    let classesThumb = thumbActive.classList;
+    let firstThumb = false;
+
+    //controllo le classi di ogni thumbnail
+    for (let index = 0; index < classesThumb.length; index++) {
+        const elementThumb = classesThumb[index];
+        console.log(index, elementThumb);
+
+        //se thumbActive ha classe first
+        if (elementThumb == 'first') {
+            firstThumb = true;
+        }
+
+    }
+
     //se non è la prima immagine
     if (first == false) {
         imageActive.classList.remove('active');
-        thumbActive.classList.remove('activethumb');
 
         const imageNext = imageActive.previousElementSibling;
         imageNext.classList.add('active');
+    }
+
+    //se non è la prima thumbnail
+    if (firstThumb == false) {
+        thumbActive.classList.remove('activethumb');
+
         const thumbNext = thumbActive.previousElementSibling;
         thumbNext.classList.add('activethumb');
     }
